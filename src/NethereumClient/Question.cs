@@ -24,5 +24,7 @@ namespace NethereumClient
         [Parameter("uint",5)]
         public int isActive { get; set; }
 
+        public string questionText { get; set; }
+
     }
 }
