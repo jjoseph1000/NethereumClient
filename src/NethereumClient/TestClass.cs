@@ -53,62 +53,32 @@ namespace NethereumClient
                 //}
                 //string test = await castVote();
                 string transactionId;
-                Nethereum.RPC.Eth.DTOs.Transaction transaction;
-                var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
-                transactionId = await insertUpdateQuestion("1", 1, "Election of Director: Alice", "For", 1, txCount.Value);
-                transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                while (transaction.BlockHash == null)
-                {
-                    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                }
-                txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
-                while (transaction.Nonce == txCount.Value)
-                {
-                    txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
-                }
+                //transactionId = await insertUpdateQuestion("1", 1, "Election of Director: Alice", "For", 1);
 
+                //transactionId = await insertUpdateQuestion("2", 1, "Election of Director: Bob", "For", 1);
 
-                transactionId = await insertUpdateQuestion("2", 1, "Election of Director: Bob", "For", 1, txCount.Value);
-                transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                while (transaction.BlockHash == null)
-                {
-                    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                }
-                //////////////////
-                //transactionId = await insertUpdateQuestion("3", 1, HexStringUTF8ConvertorExtensions.ToHexUTF8("Election of Director: Charlie").HexToByteArray(), "For", 1);
-                //transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //while (transaction.BlockHash == null)
-                //{
-                //    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //}
+                //transactionId = await insertUpdateQuestion("3", 1, "Election of Director: Charlie", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("4", 1, HexStringUTF8ConvertorExtensions.ToHexUTF8("Election of Director: David").HexToByteArray(), "For", 1);
-                //transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //while (transaction.BlockHash == null)
-                //{
-                //    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //}
+                //transactionId = await insertUpdateQuestion("4", 1, "Election of Director: David", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("5", 1, HexStringUTF8ConvertorExtensions.ToHexUTF8("Election of Director: Elizabath").HexToByteArray(), "For", 1);
-                //transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //while (transaction.BlockHash == null)
-                //{
-                //    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //}
+                //transactionId = await insertUpdateQuestion("5", 1, "Election of Director: Elizabath", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("6", 1, HexStringUTF8ConvertorExtensions.ToHexUTF8("Election of Director: Frank").HexToByteArray(), "For", 1);
-                //transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //while (transaction.BlockHash == null)
-                //{
-                //    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //}
+                //transactionId = await insertUpdateQuestion("6", 1, "Election of Director: Frank", "For", 1);
 
                 //transactionId = await insertUpdateQuestion("7", 6, "Ratification of the appointment", "For", 1);
-                //transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //while (transaction.BlockHash == null)
-                //{
-                //    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(transactionId);
-                //}
+                //transactionId = await addQuestionTextRow("7", 1, "by our audit committee of Ernst");
+                //transactionId = await addQuestionTextRow("7", 2, "& Young LLP as our independent");
+                //transactionId = await addQuestionTextRow("7", 3, "registered public accounting");
+                //transactionId = await addQuestionTextRow("7", 4, "firm for the fiscal year ending");
+                //transactionId = await addQuestionTextRow("7", 5, "December 31, 2017");
+
+                //transactionId = await insertUpdateQuestion("8", 3, "Advisory Vote to Approve the", "For", 1);
+                //transactionId = await addQuestionTextRow("8", 1, "Compensation of Named Executive");
+                //transactionId = await addQuestionTextRow("8", 2, "Officers");
+
+                transactionId = await insertUpdateQuestion("9", 3, "The approval of the Company's", "For", 1);
+                transactionId = await addQuestionTextRow("9", 1, "Second Amended and Restated");
+                transactionId = await addQuestionTextRow("9", 2, "2008 Stock Incentive Plan");
 
                 List<Question> questions = await getQuestions();
 
@@ -149,7 +119,7 @@ namespace NethereumClient
                 for (int y=0;y<question.questionTextRows;y++)
                 {
                     string questionText = await getQuestionTextByRow(question.questionId, y);
-                    question.questionText += " " + questionText;
+                    question.questionText += " " + questionText.Replace("\0","");
                 }
 
                 questions.Add(question);
@@ -202,16 +172,19 @@ namespace NethereumClient
 
             QuestionText  result = await function.CallDeserializingToObjectAsync<QuestionText>(param);
             string s = HexStringUTF8ConvertorExtensions.HexToUTF8String(result.textLine.ToHex());
-            return "";
+            return s;
         }
 
-        public async Task<string> insertUpdateQuestion(string quid, int numberOfLines, string lineOneText, string boardRecommendation, int isActive, System.Numerics.BigInteger nonce)
+        public async Task<string> insertUpdateQuestion(string quid, int numberOfLines, string lineOneText, string boardRecommendation, int isActive)
         {
 
 
             string returnText = "";
             try
             {
+                Nethereum.RPC.Eth.DTOs.Transaction transaction;
+                var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+
                 var contract = web3.Eth.GetContract(abi, contractAddress);
                 var function = contract.GetFunction("insertUpdateQuestion");
                 object[] param = new object[5];
@@ -222,9 +195,16 @@ namespace NethereumClient
                 param[4] = isActive;
                 var data = function.GetData(param);
                 var encoded = web3.OfflineTransactionSigning.SignTransaction(accountPrivateKey, contractAddress, 0,
-                  nonce, 1000000000L, 900000, data);
+                  txCount.Value, 1000000000L, 900000, data);
 
                 returnText = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(encoded).ConfigureAwait(false);
+                transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+                txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+                while (transaction.Nonce == txCount.Value)
+                {
+                    txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+                }
+
             }
             catch (Exception ex)
             {
@@ -233,23 +213,29 @@ namespace NethereumClient
                 return returnText;
         }
 
-        public async Task<string> addQuestionTextRow(string quid, int numberOfLines, string lineOneText, string boardRecommendation, int isActive)
+        public async Task<string> addQuestionTextRow(string questionId, int questionTextRow, string questionText)
         {
+            Nethereum.RPC.Eth.DTOs.Transaction transaction;
             var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
             Console.Write(txCount.Value);
             var contract = web3.Eth.GetContract(abi, contractAddress);
             var function = contract.GetFunction("addQuestionTextRow");
-            object[] param = new object[5];
-            param[0] = quid;
-            param[1] = numberOfLines;
-            param[2] = lineOneText;
-            param[3] = boardRecommendation;
-            param[4] = isActive;
+            object[] param = new object[3];
+            param[0] = questionId;
+            param[1] = questionTextRow;
+            param[2] = questionText;
             var data = function.GetData(param);
             var encoded = web3.OfflineTransactionSigning.SignTransaction(accountPrivateKey, contractAddress, 0,
               txCount.Value, 1000000000L, 900000, data);
 
             string returnText = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(encoded).ConfigureAwait(false);
+            transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+            txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+            while (transaction.Nonce == txCount.Value)
+            {
+                txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+            }
+
             return returnText;
         }
 
