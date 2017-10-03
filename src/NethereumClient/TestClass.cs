@@ -18,13 +18,13 @@ namespace NethereumClient
     {
         static readonly string kovanNet = "https://kovan.infura.io/";
         static readonly string rinkebyNet = "https://rinkeby.infura.io/";
-        static readonly string abi = "[{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"string\"}],\"name\":\"getLastVoteSessionId\",\"outputs\":[{\"name\":\"voteSessionId1\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"indexVoter\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"string\"}],\"name\":\"getVoteAnswersByVoterId\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter1\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voterIndex\",\"type\":\"uint256\"}],\"name\":\"getVoteAnswersByIndex\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter1\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalVoters\",\"outputs\":[{\"name\":\"totalVoters\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionIndex\",\"type\":\"uint256\"}],\"name\":\"getQuestionByIndex\",\"outputs\":[{\"name\":\"questionIndex1\",\"type\":\"uint256\"},{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"name\":\"insertUpdateQuestion\",\"outputs\":[{\"name\":\"insertupdate\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"x\",\"type\":\"bytes32\"}],\"name\":\"bytes32ToString\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"}],\"name\":\"getQuestionTextByRow\",\"outputs\":[{\"name\":\"questionid\",\"type\":\"string\"},{\"name\":\"row\",\"type\":\"uint256\"},{\"name\":\"textLine\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"}],\"name\":\"addQuestionTextRow\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalQuestions\",\"outputs\":[{\"name\":\"totalQuestions\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"selectedAnswers\",\"type\":\"string\"},{\"name\":\"voteShares\",\"type\":\"uint256\"}],\"name\":\"vote\",\"outputs\":[{\"name\":\"Result\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"source\",\"type\":\"string\"}],\"name\":\"stringToBytes32\",\"outputs\":[{\"name\":\"result\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"type\":\"constructor\"}]";
-        static readonly string contractAddress = "0xD2a037b936393A702FaE8122E501Bafb6C772e1B";
+        static readonly string abi = "[{\"constant\":false,\"inputs\":[{\"name\":\"indexVoter\",\"type\":\"uint256\"},{\"name\":\"voterAddress\",\"type\":\"address\"}],\"name\":\"getVoteAnswersByAddress\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voterIndex\",\"type\":\"uint256\"}],\"name\":\"getVoteAnswersByIndex\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalVoters\",\"outputs\":[{\"name\":\"totalVoters\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getLastVoteSessionId\",\"outputs\":[{\"name\":\"voteSessionId1\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getVoteAnswers\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionIndex\",\"type\":\"uint256\"}],\"name\":\"getQuestionByIndex\",\"outputs\":[{\"name\":\"questionIndex1\",\"type\":\"uint256\"},{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"name\":\"insertUpdateQuestion\",\"outputs\":[{\"name\":\"insertupdate\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"x\",\"type\":\"bytes32\"}],\"name\":\"bytes32ToString\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"selectedAnswers\",\"type\":\"string\"},{\"name\":\"voteShares\",\"type\":\"uint256\"}],\"name\":\"vote\",\"outputs\":[{\"name\":\"Result\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"}],\"name\":\"getQuestionTextByRow\",\"outputs\":[{\"name\":\"questionid\",\"type\":\"string\"},{\"name\":\"row\",\"type\":\"uint256\"},{\"name\":\"textLine\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"}],\"name\":\"addQuestionTextRow\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalQuestions\",\"outputs\":[{\"name\":\"totalQuestions\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"source\",\"type\":\"string\"}],\"name\":\"stringToBytes32\",\"outputs\":[{\"name\":\"result\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"type\":\"constructor\"}]";
+        static readonly string contractAddress = "0x5DA7598EA8730848ec08701aA84119185914e155";
         static readonly string accountPublicAddress = "0x4c3b38F3085A17c1fC8396A3b4B3015ABbC6A2CD";
         static readonly string accountPrivateKey = "0d0c308303065f2e42bedec3211fab3cb22449cba989b51e22705a575ad12599";
         static readonly VoteExplorerContext Context = new VoteExplorerContext();
 
-        Web3 web3 = new Web3(rinkebyNet);
+        Web3 web3 = new Web3(kovanNet);
 
         [Fact]
         public async Task ShouldBeAbleToDeployContract()
@@ -55,37 +55,35 @@ namespace NethereumClient
                 //}
                 //string test = await castVote();
                 string transactionId;
-                //transactionId = await insertUpdateQuestion("1", 1, "Election of Director: Alice", "For", 1);
+                transactionId = await insertUpdateQuestion("1", 1, "Election of Director: Alice", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("2", 1, "Election of Director: Bob", "For", 1);
+                transactionId = await insertUpdateQuestion("2", 1, "Election of Director: Bob", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("3", 1, "Election of Director: Charlie", "For", 1);
+                transactionId = await insertUpdateQuestion("3", 1, "Election of Director: Charlie", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("4", 1, "Election of Director: David", "For", 1);
+                transactionId = await insertUpdateQuestion("4", 1, "Election of Director: David", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("5", 1, "Election of Director: Elizabath", "For", 1);
+                transactionId = await insertUpdateQuestion("5", 1, "Election of Director: Elizabath", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("6", 1, "Election of Director: Frank", "For", 1);
+                transactionId = await insertUpdateQuestion("6", 1, "Election of Director: Frank", "For", 1);
 
-                //transactionId = await insertUpdateQuestion("7", 6, "Ratification of the appointment", "For", 1);
-                //transactionId = await addQuestionTextRow("7", 1, "by our audit committee of Ernst");
-                //transactionId = await addQuestionTextRow("7", 2, "& Young LLP as our independent");
-                //transactionId = await addQuestionTextRow("7", 3, "registered public accounting");
-                //transactionId = await addQuestionTextRow("7", 4, "firm for the fiscal year ending");
-                //transactionId = await addQuestionTextRow("7", 5, "December 31, 2017");
+                transactionId = await insertUpdateQuestion("7", 6, "Ratification of the appointment", "For", 1);
+                transactionId = await addQuestionTextRow("7", 1, "by our audit committee of Ernst");
+                transactionId = await addQuestionTextRow("7", 2, "& Young LLP as our independent");
+                transactionId = await addQuestionTextRow("7", 3, "registered public accounting");
+                transactionId = await addQuestionTextRow("7", 4, "firm for the fiscal year ending");
+                transactionId = await addQuestionTextRow("7", 5, "December 31, 2017");
 
-                //transactionId = await insertUpdateQuestion("8", 3, "Advisory Vote to Approve the", "For", 1);
-                //transactionId = await addQuestionTextRow("8", 1, "Compensation of Named Executive");
-                //transactionId = await addQuestionTextRow("8", 2, "Officers");
+                transactionId = await insertUpdateQuestion("8", 3, "Advisory Vote to Approve the", "For", 1);
+                transactionId = await addQuestionTextRow("8", 1, "Compensation of Named Executive");
+                transactionId = await addQuestionTextRow("8", 2, "Officers");
 
-                //transactionId = await insertUpdateQuestion("9", 3, "The approval of the Company's", "For", 1);
-                //transactionId = await addQuestionTextRow("9", 1, "Second Amended and Restated");
-                //transactionId = await addQuestionTextRow("9", 2, "2008 Stock Incentive Plan");
+                transactionId = await insertUpdateQuestion("9", 3, "The approval of the Company's", "For", 1);
+                transactionId = await addQuestionTextRow("9", 1, "Second Amended and Restated");
+                transactionId = await addQuestionTextRow("9", 2, "2008 Stock Incentive Plan");
 
-                //List<Question> questions = await getQuestions();
-                Question question = new Question();
-                question.questionId = "one";
-                Context.questions.InsertOne(question);
+                List<Question> questions = await getQuestions();
+                Context.questions.InsertMany(questions);
                 //Console.Write(result.ToString());
             }
             catch (Exception ex)
@@ -203,6 +201,10 @@ namespace NethereumClient
 
                 returnText = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(encoded).ConfigureAwait(false);
                 transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+                while (transaction == null)
+                {
+                    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+                }
                 txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
                 while (transaction.Nonce == txCount.Value)
                 {
@@ -235,6 +237,10 @@ namespace NethereumClient
 
             string returnText = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(encoded).ConfigureAwait(false);
             transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+            while (transaction == null)
+            {
+                transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+            }
             txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
             while (transaction.Nonce == txCount.Value)
             {
