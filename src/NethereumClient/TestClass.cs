@@ -14,7 +14,7 @@ using NethereumClient.Models;
 
 namespace NethereumClient
 {
-    public class TestClass
+    public class CheckVoteRequests
     {
         static readonly string kovanNet = "https://kovan.infura.io/";
         static readonly string rinkebyNet = "https://rinkeby.infura.io/";
@@ -82,8 +82,10 @@ namespace NethereumClient
                 //transactionId = await addQuestionTextRow("9", 1, "Second Amended and Restated");
                 //transactionId = await addQuestionTextRow("9", 2, "2008 Stock Incentive Plan");
 
-                List<Question> questions = await getQuestions();
-                Context.questions.InsertMany(questions);
+                //List<Question> questions = await getQuestions();
+                Question question = new Question();
+                question.questionId = "one";
+                Context.questions.InsertOne(question);
                 //Console.Write(result.ToString());
             }
             catch (Exception ex)

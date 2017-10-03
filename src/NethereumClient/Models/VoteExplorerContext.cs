@@ -12,22 +12,22 @@ namespace NethereumClient.Models
     public class VoteExplorerContext
     {
         public IMongoDatabase Database;
-        public IConfigurationRoot Configuration;
+        //public IConfigurationRoot Configuration;
         public VoteExplorerContext()
         {
             try
             {
-                var builder2 = new ConfigurationBuilder()
-                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+                //var builder2 = new ConfigurationBuilder()
+                // .SetBasePath(Directory.GetCurrentDirectory())
+                //.AddJsonFile("appsettings.json");
 
-                Configuration = builder2.Build();
+                //Configuration = builder2.Build();
 
-                var connectionString = Configuration["MongoDBConnectionString"];
+                var connectionString = "mongodb://localhost";//Configuration["MongoDBConnectionString"];
                 var settings = MongoClientSettings.FromUrl(new MongoUrl(connectionString));
                 //settings.ClusterConfigurator = builder => builder.Subscribe(new Log4NetMongoEvents());
                 var client = new MongoClient(settings);
-                Database = client.GetDatabase(Configuration["DatabaseName"]);
+                Database = client.GetDatabase("voteexplorerethereumclient");//client.GetDatabase(Configuration["DatabaseName"]);
             }
             catch (Exception ex)
             {

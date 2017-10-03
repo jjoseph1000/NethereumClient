@@ -10,9 +10,15 @@ namespace NethereumClient
     {
         public static void Main(string[] args)
         {
-            TestClass test = new TestClass();
+            CheckVoteRequests checkVoteRequests = new CheckVoteRequests();
+            bool continueRunning = true;
+            while (continueRunning)
+            {
+                checkVoteRequests.ShouldBeAbleToDeployContract().Wait();
 
-            test.ShouldBeAbleToDeployContract().Wait();
+                Task.Delay(60000).Wait();
+            }
+
         }
     }
 }
