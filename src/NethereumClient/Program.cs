@@ -14,11 +14,10 @@ namespace NethereumClient
             bool continueRunning = true;
             while (continueRunning)
             {
-                checkVoteRequests.ShouldBeAbleToDeployContract().Wait();
+                checkVoteRequests.ProcessVote().Wait();
 
                 Task.Delay(60000).Wait();
             }
-
         }
     }
 }

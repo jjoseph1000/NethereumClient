@@ -18,13 +18,28 @@ namespace NethereumClient
     {
         static readonly string kovanNet = "https://kovan.infura.io/";
         static readonly string rinkebyNet = "https://rinkeby.infura.io/";
-        static readonly string abi = "[{\"constant\":false,\"inputs\":[{\"name\":\"indexVoter\",\"type\":\"uint256\"},{\"name\":\"voterAddress\",\"type\":\"address\"}],\"name\":\"getVoteAnswersByAddress\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voterIndex\",\"type\":\"uint256\"}],\"name\":\"getVoteAnswersByIndex\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalVoters\",\"outputs\":[{\"name\":\"totalVoters\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getLastVoteSessionId\",\"outputs\":[{\"name\":\"voteSessionId1\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getVoteAnswers\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionIndex\",\"type\":\"uint256\"}],\"name\":\"getQuestionByIndex\",\"outputs\":[{\"name\":\"questionIndex1\",\"type\":\"uint256\"},{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"name\":\"insertUpdateQuestion\",\"outputs\":[{\"name\":\"insertupdate\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"x\",\"type\":\"bytes32\"}],\"name\":\"bytes32ToString\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"address\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"selectedAnswers\",\"type\":\"string\"},{\"name\":\"voteShares\",\"type\":\"uint256\"}],\"name\":\"vote\",\"outputs\":[{\"name\":\"Result\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"}],\"name\":\"getQuestionTextByRow\",\"outputs\":[{\"name\":\"questionid\",\"type\":\"string\"},{\"name\":\"row\",\"type\":\"uint256\"},{\"name\":\"textLine\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"}],\"name\":\"addQuestionTextRow\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalQuestions\",\"outputs\":[{\"name\":\"totalQuestions\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"source\",\"type\":\"string\"}],\"name\":\"stringToBytes32\",\"outputs\":[{\"name\":\"result\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"type\":\"constructor\"}]";
-        static readonly string contractAddress = "0x5DA7598EA8730848ec08701aA84119185914e155";
+        static readonly string abi = "[{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"string\"}],\"name\":\"getLastVoteSessionId\",\"outputs\":[{\"name\":\"voteSessionId1\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"indexVoter\",\"type\":\"uint256\"},{\"name\":\"voter\",\"type\":\"string\"}],\"name\":\"getVoteAnswersByVoterId\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter1\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voterIndex\",\"type\":\"uint256\"}],\"name\":\"getVoteAnswersByIndex\",\"outputs\":[{\"name\":\"indexVoter1\",\"type\":\"uint256\"},{\"name\":\"voter1\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"voteAnswers\",\"type\":\"string\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalVoters\",\"outputs\":[{\"name\":\"totalVoters\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionIndex\",\"type\":\"uint256\"}],\"name\":\"getQuestionByIndex\",\"outputs\":[{\"name\":\"questionIndex1\",\"type\":\"uint256\"},{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRows\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"},{\"name\":\"boardRecommendation\",\"type\":\"string\"},{\"name\":\"isActive\",\"type\":\"uint256\"}],\"name\":\"insertUpdateQuestion\",\"outputs\":[{\"name\":\"insertupdate\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"x\",\"type\":\"bytes32\"}],\"name\":\"bytes32ToString\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"}],\"name\":\"getQuestionTextByRow\",\"outputs\":[{\"name\":\"questionid\",\"type\":\"string\"},{\"name\":\"row\",\"type\":\"uint256\"},{\"name\":\"textLine\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"questionId\",\"type\":\"string\"},{\"name\":\"questionTextRow\",\"type\":\"uint256\"},{\"name\":\"questionText\",\"type\":\"bytes32\"}],\"name\":\"addQuestionTextRow\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"totalQuestions\",\"outputs\":[{\"name\":\"totalQuestions\",\"type\":\"uint256\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"voter\",\"type\":\"string\"},{\"name\":\"voteSessionId\",\"type\":\"string\"},{\"name\":\"selectedAnswers\",\"type\":\"string\"},{\"name\":\"voteShares\",\"type\":\"uint256\"}],\"name\":\"vote\",\"outputs\":[{\"name\":\"Result\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"source\",\"type\":\"string\"}],\"name\":\"stringToBytes32\",\"outputs\":[{\"name\":\"result\",\"type\":\"bytes32\"}],\"payable\":false,\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"type\":\"constructor\"}]";
+        static readonly string contractAddress = "0xB4e8F652ae2EDDBdFBFd2e1f70E42fC37DF44d88";
         static readonly string accountPublicAddress = "0x4c3b38F3085A17c1fC8396A3b4B3015ABbC6A2CD";
         static readonly string accountPrivateKey = "0d0c308303065f2e42bedec3211fab3cb22449cba989b51e22705a575ad12599";
         static readonly VoteExplorerContext Context = new VoteExplorerContext();
 
         Web3 web3 = new Web3(kovanNet);
+
+        public async Task ProcessVote()
+        {
+            try
+            {
+                string guid = System.Guid.NewGuid().ToString("N");
+
+                string transactionId = await vote(guid,guid,"AAAAAAAAA",500);
+                List<Voter> voters = await getVotes();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         [Fact]
         public async Task ShouldBeAbleToDeployContract()
@@ -92,7 +107,83 @@ namespace NethereumClient
             }
         }
 
+        public async Task<string> vote(string voterId, string voteSessionId, string selectedAnswers, long voteShares)
+        {
 
+
+            string returnText = "";
+            try
+            {
+                Nethereum.RPC.Eth.DTOs.Transaction transaction;
+                var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+
+                var contract = web3.Eth.GetContract(abi, contractAddress);
+                var function = contract.GetFunction("vote");
+                object[] param = new object[4];
+                param[0] = voterId;
+                param[1] = voteSessionId;
+                param[2] = selectedAnswers;
+                param[3] = voteShares;
+                var data = function.GetData(param);
+                var encoded = web3.OfflineTransactionSigning.SignTransaction(accountPrivateKey, contractAddress, 0,
+                  txCount.Value, 1000000000L, 900000, data);
+
+                returnText = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(encoded).ConfigureAwait(false);
+                transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+                while (transaction == null)
+                {
+                    transaction = await web3.Eth.Transactions.GetTransactionByHash.SendRequestAsync(returnText);
+                }
+                txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+                while (transaction.Nonce == txCount.Value)
+                {
+                    Thread.Sleep(5000);
+                    txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(accountPublicAddress).ConfigureAwait(false);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return returnText;
+        }
+
+        public async Task<int> totalVoters()
+        {
+            var contract = web3.Eth.GetContract(abi, contractAddress);
+            var function = contract.GetFunction("totalVoters");
+
+            int result = await function.CallAsync<int>();
+            return result;
+        }
+
+        public async Task<Voter> getVoteAnswersByIndex(long voterIndex)
+        {
+            var contract = web3.Eth.GetContract(abi, contractAddress);
+            var function = contract.GetFunction("getVoteAnswersByIndex");
+            object[] param = new object[1];
+            param[0] = voterIndex;
+
+            Voter result = await function.CallDeserializingToObjectAsync<Voter>(param);
+            return result;
+        }
+
+        public async Task<List<Voter>> getVotes()
+        {
+            List<Voter> voters = new List<Voter>();
+
+            long totVoters = await totalVoters();
+
+            for (int x = 0; x < totVoters; x++)
+            {
+                Voter voter = await getVoteAnswersByIndex(x);
+
+                voters.Add(voter);
+            }
+
+            return voters;
+        }
 
         public async Task<string> getTokenName()
         {
@@ -133,45 +224,32 @@ namespace NethereumClient
 
         public async Task<int> totalQuestions()
         {
-
-
-
             var contract = web3.Eth.GetContract(abi, contractAddress);
             var function = contract.GetFunction("totalQuestions");
-
-
-
+            
             int result = await function.CallAsync<int>();
             return result;
         }
 
         public async Task<Question> getQuestionByIndex(int questionIndex)
         {
-
-
-
             var contract = web3.Eth.GetContract(abi, contractAddress);
             var function = contract.GetFunction("getQuestionByIndex");
             object[] param = new object[1];
             param[0] = questionIndex;
-
 
             Question result = await function.CallDeserializingToObjectAsync<Question>(param);
             return result;
         }
 
         public async Task<string> getQuestionTextByRow(string questionId, int questionTextRow)
-        {
-            
-
-
+        {        
             var contract = web3.Eth.GetContract(abi, contractAddress);
             var function = contract.GetFunction("getQuestionTextByRow");
             object[] param = new object[2];
             param[0] = questionId;
             param[1] = questionTextRow;
-
-
+            
             QuestionText  result = await function.CallDeserializingToObjectAsync<QuestionText>(param);
             string s = HexStringUTF8ConvertorExtensions.HexToUTF8String(result.textLine.ToHex());
             return s;
@@ -179,8 +257,6 @@ namespace NethereumClient
 
         public async Task<string> insertUpdateQuestion(string quid, int numberOfLines, string lineOneText, string boardRecommendation, int isActive)
         {
-
-
             string returnText = "";
             try
             {
