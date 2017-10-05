@@ -30,9 +30,9 @@ namespace NethereumClient
         {
             try
             {
-                string guid = System.Guid.NewGuid().ToString("N");
+                //string guid = System.Guid.NewGuid().ToString("N");
 
-                string transactionId = await vote(guid,guid,"AAAAAAAAA",500);
+                //string transactionId = await vote(guid,guid,"AAAAAAAAA",500);
                 List<Voter> voters = await getVotes();
             }
             catch (Exception ex)
