@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/win10-x64",
-    "signature": "d08db3728eab8565c1ccc924a95da168b5cd9bd7"
+    "signature": "a3025fa982c918de9663ddb9094580734526f011"
   },
   "compilationOptions": {},
   "targets": {
@@ -16,10 +16,10 @@
           "Microsoft.Extensions.Logging.Debug": "1.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.1",
           "Microsoft.NETCore.App": "1.0.0",
-          "MongoDB.Bson": "2.4.4",
-          "MongoDB.Driver": "2.4.4",
-          "MongoDB.Driver.Core": "2.4.4",
-          "MongoDB.Driver.GridFS": "2.4.4",
+          "MongoDB.Driver": "2.4.3",
+          "MongoDB.Bson": "2.4.3",
+          "MongoDB.Driver.Core": "2.4.3",
+          "MongoDB.Driver.GridFS": "2.4.3",
           "Nethereum.ABI": "1.0.6",
           "Nethereum.Hex": "1.0.6",
           "Nethereum.JsonRpc.Client": "1.0.6",
@@ -436,7 +436,7 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "MongoDB.Bson/2.4.4": {
+      "MongoDB.Bson/2.4.3": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
           "System.Collections.NonGeneric": "4.3.0",
@@ -448,10 +448,10 @@
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.4.4": {
+      "MongoDB.Driver/2.4.3": {
         "dependencies": {
-          "MongoDB.Bson": "2.4.4",
-          "MongoDB.Driver.Core": "2.4.4",
+          "MongoDB.Bson": "2.4.3",
+          "MongoDB.Driver.Core": "2.4.3",
           "NETStandard.Library": "2.0.0",
           "System.Linq.Queryable": "4.0.1"
         },
@@ -459,9 +459,9 @@
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.4.4": {
+      "MongoDB.Driver.Core/2.4.3": {
         "dependencies": {
-          "MongoDB.Bson": "2.4.4",
+          "MongoDB.Bson": "2.4.3",
           "NETStandard.Library": "2.0.0",
           "System.Collections.Specialized": "4.3.0",
           "System.Diagnostics.TraceSource": "4.0.0",
@@ -473,11 +473,11 @@
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {}
         }
       },
-      "MongoDB.Driver.GridFS/2.4.4": {
+      "MongoDB.Driver.GridFS/2.4.3": {
         "dependencies": {
-          "MongoDB.Bson": "2.4.4",
-          "MongoDB.Driver": "2.4.4",
-          "MongoDB.Driver.Core": "2.4.4",
+          "MongoDB.Bson": "2.4.3",
+          "MongoDB.Driver": "2.4.3",
+          "MongoDB.Driver.Core": "2.4.3",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -2512,25 +2512,25 @@
       "serviceable": true,
       "sha512": "sha512-q+eLtROUAQ3OxYA5mpQrgyFgzLQxIyrfT2eLpYX5IEPlHmIio2nh4F5bgOaQoGOV865kFKZZso9Oq9RlazvXtg=="
     },
-    "MongoDB.Bson/2.4.4": {
+    "MongoDB.Bson/2.4.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BavFx+rmR5k+dx14tC23KTyjCPkASvTQ1WxzLYHt2w3Mkqel5lJV6+gWzWV3DX9hnTewCC09OKqNqckiJl4sIw=="
+      "sha512": "sha512-frj9UMKRW7EwYSqqD5x1uO61Rrm50dMdbjz19bKhNtG31iEZceoURcEBSsjvlrm2OotLwVKmEF4f64INwb+HzQ=="
     },
-    "MongoDB.Driver/2.4.4": {
+    "MongoDB.Driver/2.4.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sG+4H7732fG3XGCXWsxwuUQBvnbVO/bzzxBVZHtHa5R2UDsRXR7BfQxAS/d9Qk8FlNDHOjTjz+GzWTgzjgopQw=="
+      "sha512": "sha512-jMqO2K/POx3xjFrWOc7U4nTXc0+F7/KuBXFt5+Rr0qnOMsiZy+1YDoZ+J0AASfNaNRZ6BZafXq93Q3rDWZ5KUQ=="
     },
-    "MongoDB.Driver.Core/2.4.4": {
+    "MongoDB.Driver.Core/2.4.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fVjXuQE5Qe2P38xz9wz5V0QhT54+ZT78/JUKMMbIXOKYVFgkzEOE7UU6ZsbC/AbR4lwGIpRQZoiv7wW3rJb3xQ=="
+      "sha512": "sha512-h87ILAszZ1HoHZAqrdYi1eLfC9dlQJxDweWSu9gcIlgW6FtPGxf0pca+YjXSBmoYSvW1PnAkzygNw/z60lqyjg=="
     },
-    "MongoDB.Driver.GridFS/2.4.4": {
+    "MongoDB.Driver.GridFS/2.4.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/DbvI3emeOk5wrHQ8jHOVL716cnIwo2cMIp+KYMJ+jMKzapxW6SWXphYr+dvnQrmeEXw//ruWX3Gvop3jB7VCw=="
+      "sha512": "sha512-dVJFFMW02Rz8W/5Ts8+5vJ5Ie+O0xQ9RH0nR0BxS+qO+9zz+0AdbqCB2sgQg12qAFKE/+A0xnktTjok5YmzMnA=="
     },
     "Nethereum.ABI/1.0.6": {
       "type": "package",

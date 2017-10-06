@@ -11,13 +11,7 @@ namespace NethereumClient
         public static void Main(string[] args)
         {
             CheckVoteRequests checkVoteRequests = new CheckVoteRequests();
-            bool continueRunning = true;
-            while (continueRunning)
-            {
-                checkVoteRequests.ProcessVote().Wait();
-
-                Task.Delay(60000).Wait();
-            }
+            checkVoteRequests.ProcessVote().Wait();
         }
     }
 }

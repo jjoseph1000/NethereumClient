@@ -11,6 +11,7 @@ using Nethereum.Web3;
 using Nethereum.RPC.Eth;
 using Nethereum.Hex.HexConvertors.Extensions;
 using NethereumClient.Models;
+using MongoDB.Driver;
 
 namespace NethereumClient
 {
@@ -30,10 +31,39 @@ namespace NethereumClient
         {
             try
             {
-                //string guid = System.Guid.NewGuid().ToString("N");
+                bool continueRunning = true;
+                while (continueRunning)
+                {
+                    var blockchainVoteRequests = Context.blockchainvoterequests.AsQueryable()
+                                                   .Where(bc=>bc.blockchainVoterRequestStatus == BlockchainVoterRequestStatus.Submitted)
+                                                   .OrderBy(bc=>bc.dateSubmitted);
+                    
+                    if (blockchainVoteRequests.Any())
+                    {
+                        BlockchainVoteRequest blockchainVoteRequest = blockchainVoteRequests.FirstOrDefault();
+                        var filterBlockchainVoteRequest = Builders<BlockchainVoteRequest>.Filter.Eq("_id", blockchainVoteRequest._id);
+                        var updateBlockchainVoteRequest = Builders<BlockchainVoteRequest>.Update.Set("blockchainVoterRequestStatus", BlockchainVoterRequestStatus.Processing);
+                        Context.blockchainvoterequests.UpdateOneAsync(filterBlockchainVoteRequest, updateBlockchainVoteRequest);
 
-                //string transactionId = await vote(guid,guid,"AAAAAAAAA",500);
-                List<Voter> voters = await getVotes();
+                        for (int x=0;x<blockchainVoteRequest.maskedVoters.Count();x++)
+                        {
+                            Voter voter = blockchainVoteRequest.maskedVoters[x];
+
+                            string transactionId = await vote(voter.voterId,voter.voteSessionId,voter.voteAnswers,voter.balance);
+                            blockchainVoteRequest.maskedVoters[x].transactionId = transactionId;
+                        }
+
+                        updateBlockchainVoteRequest = Builders<BlockchainVoteRequest>.Update.Set("blockchainVoterRequestStatus", BlockchainVoterRequestStatus.AcceptedByBlockchain)
+                                                                                            .Set("maskedVoters", blockchainVoteRequest.maskedVoters);
+                        Context.blockchainvoterequests.UpdateOne(filterBlockchainVoteRequest, updateBlockchainVoteRequest);
+                    }
+                    else
+                    {
+                        Task.Delay(60000).Wait();
+                    }
+
+                }
+
             }
             catch (Exception ex)
             {
@@ -98,7 +128,6 @@ namespace NethereumClient
                 transactionId = await addQuestionTextRow("9", 2, "2008 Stock Incentive Plan");
 
                 List<Question> questions = await getQuestions();
-                Context.questions.InsertMany(questions);
                 //Console.Write(result.ToString());
             }
             catch (Exception ex)
