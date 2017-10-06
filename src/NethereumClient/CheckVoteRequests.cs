@@ -51,8 +51,9 @@ namespace NethereumClient
 
                             string transactionId = await vote(voter.voterId,voter.voteSessionId,voter.voteAnswers,voter.balance);
                             blockchainVoteRequest.maskedVoters[x].transactionId = transactionId;
-
-                            int percentage = Convert.ToInt32((x+1)/ blockchainVoteRequest.maskedVoters.Count() * 100);
+                            decimal currentVoterNum = Convert.ToDecimal(x + 1);
+                            decimal totalVoters = Convert.ToDecimal(blockchainVoteRequest.maskedVoters.Count());
+                            int percentage = Convert.ToInt32((currentVoterNum / totalVoters * 100) + Convert.ToDecimal(.5));
 
                             var filterVoteSubmission = Builders<VoteSubmission>.Filter.Eq("_id", blockchainVoteRequest.VoteSubmissionId);
                             var updateVoteSubmission = Builders<VoteSubmission>.Update.Set("completePercentage", percentage);
