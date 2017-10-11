@@ -49,7 +49,7 @@ namespace NethereumClient
                         {
                             Voter voter = blockchainVoteRequest.maskedVoters[x];
 
-                            string transactionId = await vote(voter.voterId,voter.voteSessionId,voter.voteAnswers,voter.balance);
+                            string transactionId = await vote(voter.voterId,voter.sessionId,voter.voteSelections,voter.balance);
                             blockchainVoteRequest.maskedVoters[x].transactionId = transactionId;
                             decimal currentVoterNum = Convert.ToDecimal(x + 1);
                             decimal totalVoters = Convert.ToDecimal(blockchainVoteRequest.maskedVoters.Count());
