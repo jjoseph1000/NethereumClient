@@ -11,7 +11,8 @@ namespace NethereumClient
         public static void Main(string[] args)
         {
             CheckVoteRequests checkVoteRequests = new CheckVoteRequests();
-            checkVoteRequests.ProcessVote().Wait();
+            //checkVoteRequests.ProcessVote().Wait();
+            checkVoteRequests.ShouldBeAbleToDeployContract().Wait();
         }
     }
 }
